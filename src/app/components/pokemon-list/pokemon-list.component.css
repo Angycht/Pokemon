@@ -1,0 +1,60 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 20px;
+  }
+  .grid a {
+    text-decoration: none;
+    background-color: darkgrey;
+    padding: 3px;
+    border-radius: 5%;
+  }
+  .card {
+    text-align: center;
+    background: #ebebeb;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .card h3 {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  .pagination {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    background: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  .pagination button:hover {
+    background: red;
+    color: white;
+  }
+  
+  .pagination button:disabled {
+    background: gray;
+    cursor: not-allowed;
+  }
+  
