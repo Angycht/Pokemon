@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../service/pokemon.service';
+import { Pokemon } from '../../model/pokemon';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -7,9 +8,9 @@ import { PokemonService } from '../../service/pokemon.service';
   styleUrl: './pokemon-list.component.css'
 })
 export class PokemonListComponent implements OnInit {
-  allPokemons: any[] = []; // Aquí almacenamos TODOS los Pokémon
-  displayedPokemons: any[] = []; // Solo los Pokémon de la página actual
-  pageSize = 50; // Cantidad de Pokémon por página
+  allPokemons: Pokemon[] = []; // Aquí almacenamos TODOS los Pokémon
+  displayedPokemons: Pokemon[] = []; // Solo los Pokémon de la página actual
+  pageSize = 0; // Cantidad de Pokémon por página
   currentPage = 0; // Página actual
   Math: any;
   offset: any;
@@ -18,7 +19,7 @@ export class PokemonListComponent implements OnInit {
 
   ngOnInit() {
     this.pokemonService.getAllPokemons().subscribe(data => {
-      this.allPokemons = data.results.map((pokemon: any, index: number) => ({
+      this.allPokemons = data.results.map((pokemon: Pokemon, index: number) => ({
         ...pokemon,
         id: index + 1, // Añadir ID al Pokémon
         image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`

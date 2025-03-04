@@ -10,17 +10,17 @@ export class PokemonService {
 
   constructor(private http: HttpClient) {}
 
-  // 🔹 Obtener todos los Pokémon de la API (hasta 1025)
+  //Obtener todos los Pokémon de la API
   getAllPokemons(): Observable<any> {
     return this.http.get(`${this.baseUrl}/pokemon`);
   }
 
-  // 🔹 Obtener detalles de un Pokémon (por nombre o ID)
+  //Obtener detalles de un Pokémon (por nombre o ID)
   getPokemonDetails(idOrName: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/pokemon/${idOrName}`);
   }
 
-  // 🔹 Obtener información de la especie del Pokémon
+  //Obtener información de la especie del Pokémon
   getPokemonSpecies(idOrName: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/pokemon-species/${idOrName}`);
   }
