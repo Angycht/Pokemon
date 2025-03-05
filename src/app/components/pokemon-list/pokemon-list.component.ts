@@ -8,47 +8,37 @@ import { Pokemon } from '../../model/pokemon';
   styleUrl: './pokemon-list.component.css'
 })
 export class PokemonListComponent implements OnInit {
-  allPokemons: Pokemon[] = []; // Aquí almacenamos TODOS los Pokémon
-  displayedPokemons: Pokemon[] = []; // Solo los Pokémon de la página actual
-  pageSize = 0; // Cantidad de Pokémon por página
-  currentPage = 0; // Página actual
-  Math: any;
-  offset: any;
-
-  constructor(private pokemonService: PokemonService) { }
+  pokemons: Pokemon[] = [];
+  offset = 0;
+  limit = 20;
+  totalPokemons = 0;
+  constructor(private pokemonService: PokemonService) {}
 
   ngOnInit() {
-    this.pokemonService.getAllPokemons().subscribe(data => {
-      this.allPokemons = data.results.map((pokemon: Pokemon, index: number) => ({
-        ...pokemon,
-        id: index + 1, // Añadir ID al Pokémon
-        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`
-      }));
-      this.updateDisplayedPokemons();// Llamar a esta función después de cargar todos los Pokémon
-    });
+    this.loadPokemons();
   }
 
-  // Actualizar Pokémon visibles según la página actual
-  updateDisplayedPokemons() {
-    const start = this.currentPage * this.pageSize;
-    const end = start + this.pageSize;
-    this.displayedPokemons = this.allPokemons.slice(start, end);
+  loadPokemons() {
+    this.pokemonService.getAllPokemons(this.limit, this.offset).subscribe(
+      (data: {results: Pokemon[], count: number}) => {
+        this.pokemons = [...this.pokemons, ...data.results];
+        this.totalPokemons = data.count;
+        this.offset += this.limit;
+      },
+      error => console.error('Error cargando datos de pokemon:', error)
+    );
   }
 
-  nextPage() {
-    const totalPages = Math.ceil(this.allPokemons.length / this.pageSize);
-    if (this.currentPage < totalPages - 1) {  // Solo incrementa si no estás en la última página
-      this.currentPage++;
-      this.updateDisplayedPokemons();
+
+  loadMore() {
+    if (this.offset < this.totalPokemons) {
+      this.loadPokemons();
     }
   }
 
-
-  prevPage() {
-    if (this.currentPage > 0) {
-      this.currentPage--;
-      this.updateDisplayedPokemons();
-    }
+  getPokemonTypes(pokemon: Pokemon): string {
+    return pokemon.types.map(t => t.type.name).join(', ');
   }
-
 }
+
+
