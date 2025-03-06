@@ -4,7 +4,8 @@
       <h3>{{ pokemon.name | titlecase }}</h3>
       <a [routerLink]="['/pokemon', pokemon.id]">Ver Detalles</a>
     </div>
-    <button (click)="loadMore()" *ngIf="offset < totalPokemons">Siguiente</button>
+    <button (click)="paginarPreviuos()" >Anterior</button>
+    <button (click)="paginarNext()" >Siguiente</button>
   </div>
   <div class="pagination">
 </div>

@@ -1,50 +1,69 @@
-export interface Pokemon {
-  id: number;
-  name: string;
-  url: string;
-  types: PokemonType[];
-  sprites: PokemonSprites;
-  weight: number;
-  height: number;
-  abilities: PokemonAbility[];
-  stats: PokemonStat[];
-  species: PokemonSpecies;
+export interface PokemonDetails {
+  GenerationV: any;
+  abilities:                Ability[];
+  base_experience:          number;
+  forms:                    Species[];
+  height:                   number;
+  id:                       number;
+  is_default:               boolean;
+  location_area_encounters: string;
+  name:                     string;
+  url:                      string;
+  order:                    number;
+  past_types:               any[];
+  species:                  Species;
+  sprites:                  Sprites;
+  stats:                    Stat[];
+  types:                    Type[];
+  weight:                   number;
+  
 }
 
-interface PokemonType {
-  slot: number;
-  type: {
-    name: string;
-    url: string;
-  };
+export interface Habilidades {
+  flavor_text_entries: any;
+  effect_changes:      any[];
+  id:                  number;
+  is_main_series:      boolean;
+  name:                string;
+  pokemon:             PokemonDetails[];
+  genera:              any[];
 }
 
-interface PokemonSprites {
-  front_default: string;
-  front_shiny: string;
-  back_default: string;
-  back_shiny: string;
+export interface PokemonesResponse {
+  count:    number;
+  next:     string;
+  previous: null;
+  results:  PokemonDetails[];
 }
 
-interface PokemonAbility {
-  ability: {
-    name: string;
-    url: string;
-  };
-  is_hidden: boolean;
-  slot: number;
-}
-
-interface PokemonStat {
+export interface Stat {
   base_stat: number;
-  effort: number;
-  stat: {
-    name: string;
-    url: string;
-  };
+  effort:    number;
+  stat:      Species;
+}
+export interface Ability {
+  ability:   Species;
+  is_hidden: boolean;
+  slot:      number;
 }
 
-interface PokemonSpecies {
+export interface Species {
   name: string;
-  url: string;
+  url:  string;
+}
+
+
+export interface Sprites {
+  back_default:       string;
+  back_female:        string;
+  back_shiny:         string;
+  back_shiny_female:  string;
+  front_default:      string;
+  front_female:       string;
+  front_shiny:        string;
+  front_shiny_female: string;
+}
+export interface Type {
+  slot: number;
+  type: Species;
 }
