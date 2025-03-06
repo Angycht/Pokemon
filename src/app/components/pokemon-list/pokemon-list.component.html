@@ -1,13 +1,13 @@
 <div class="grid">
     <div *ngFor="let pokemon of pokemons" class="card">
       <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name">
-      <h3>{{ pokemon.name | titlecase }}</h3>
+      <h3>{{ pokemon.name  }}</h3>
       <a [routerLink]="['/pokemon', pokemon.id]">Ver Detalles</a>
     </div>
-    <button (click)="paginarPreviuos()" >Anterior</button>
-    <button (click)="paginarNext()" >Siguiente</button>
+    
   </div>
-  <div class="pagination">
+  <div class="pagination"><button (click)="paginarPreviuos()" >Anterior</button>
+    <button (click)="paginarNext()" >Siguiente</button>
 </div>
 
   

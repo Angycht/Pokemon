@@ -7,7 +7,6 @@ import { PokemonListComponent } from './components/pokemon-list/pokemon-list.com
 import { PokemonDetailsComponent } from './components/pokemon-details/pokemon-details.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { InfoComponent } from './components/info/info.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     PokemonDetailsComponent,
     HeaderComponent,
     FooterComponent,
-    InfoComponent
   ],
   imports: [
     BrowserModule,

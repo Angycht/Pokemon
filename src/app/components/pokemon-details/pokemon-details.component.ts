@@ -25,7 +25,12 @@ export class PokemonDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {
+ 
+    ngOnInit(): void {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        localStorage.removeItem('Valor');
+      }
+    
     const id = this.activatedRoute.snapshot.params['id'];
     console.log('Nombre del Pokémon:', id);
     this.cargarDetallesPokemon(id);
