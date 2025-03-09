@@ -8,6 +8,8 @@ import { PokemonDetailsComponent } from './components/pokemon-details/pokemon-de
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { InfoComponent } from './components/info/info.component';
+
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     PokemonDetailsComponent,
     HeaderComponent,
     FooterComponent,
+    InfoComponent
+
   ],
   imports: [
     BrowserModule,
